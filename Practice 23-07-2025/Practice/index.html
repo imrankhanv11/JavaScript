@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="innerhtml box">
+        <p id="first">happy</p>
+        <p id="two"></p>
+    </div>
+
+    <div class="innerhtml box">
+        <p id="third">happy</p>
+        <p id="fourth"></p>
+    </div>
+    <div class="box">
+        <h1>First</h1>
+        <p>second</p>
+        <button type="button" onclick="document.write(5 + 6)">Try it</button>
+    </div>
+    <div class="box">
+        <h2>alert box</h2>
+        <button onclick="alert('this is alert')">click</button>
+    </div>
+    <div class="box">
+        <h2>print</h2>
+        <button onclick="window.print()">click</button>
+    </div>
+    <div class="box">
+        <p id="demo"></p>
+    </div>
+    <script>
+        document.getElementById('first').innerHTML = 'changed';
+
+        document.querySelector('#two').innerHTML = '<h1>hello</h1>';
+
+        document.getElementById('third').innerText = 'heello';
+
+        document.getElementById('fourth').innerText = '<h1>same we give</h1>';
+
+
+        let myNumber = 2;
+        let txt = "";
+        while (myNumber != Infinity) {
+            myNumber = myNumber * myNumber;
+            txt = txt + myNumber + "<br>";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    </script>
+</body>
+
+</html>
