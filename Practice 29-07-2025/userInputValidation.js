@@ -37,13 +37,6 @@ function isValidEmail(email) {
 
 
 
-function isValidName(name) {
-
-    return /^[A-Za-z\s]{2,}$/.test(name.trim());
-
-}
-
-
 function isValidPassword(password) {
 
     return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password);
@@ -53,11 +46,6 @@ function isValidPassword(password) {
 
 function isValidMobileNumber(number) {
     return /^[6-9]\d{9}$/.test(number.trim());
-}
-
-
-function isValidUsername(username) {
-    return /^[a-zA-Z0-9_]{3,15}$/.test(username);
 }
 
 function isValidPinCode(pin) {
@@ -83,23 +71,6 @@ function isValidMarks(marks) {
 
 }
 
-
-function isValidPercentage(percentage) {
-    let num = Number(percentage);
-
-    return !isNaN(num) && num >= 0 && num <= 100;
-}
-
-function isValidDOB(dob) {
-
-    let inputDate = new Date(dob);
-
-    let today = new Date();
-
-    return !isNaN(inputDate) && inputDate < today;
-
-}
-
 function isValidNumber(val) {
     return !isNaN(val);
 }
@@ -108,3 +79,34 @@ function isValidNumber(val) {
 function isNotEmpty(str) {
     return str.trim().length > 0;
 }
+
+
+
+let email;
+
+do {
+  email = prompt("Enter your email: ");
+  if (!isValidEmail(email)) {
+    console.log("Invalid email. Please try again");
+  }
+} while (!isValidEmail(email));
+
+
+let password;
+
+do {
+  password = prompt("Enter a strong password (min 8 chars, upper & lower case, digit, symbol): ");
+  if (!isValidPassword(password)) {
+    console.log("Invalid email. Please try again");
+  }
+} while (!isValidPassword(password));
+
+
+let pinCode;
+
+do {
+  pinCode = prompt("Enter your 6-digit PIN code: ");
+  if (!isValidPinCode(pinCode)) {
+    console.log("Invalid email. Please try again");
+  }
+} while (!isValidPinCode(pinCode));
