@@ -28,12 +28,10 @@ console.log(percent);
 
 // date formating
 let date = new Date();
-let formattedDate = new Intl.DateTimeFormat('en-GB', {
+let formattedDate = new Intl.DateTimeFormat('en-IN', {
   day: '2-digit',
   month: 'long',
   year: 'numeric',
   weekday: 'long'
 }).format(date);
 console.log(formattedDate);
-
-
