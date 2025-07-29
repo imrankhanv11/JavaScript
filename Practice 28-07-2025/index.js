@@ -1,4 +1,3 @@
-console.log('hello')
 
 import createPrompt from 'prompt-sync';
  let prompt = createPrompt();
