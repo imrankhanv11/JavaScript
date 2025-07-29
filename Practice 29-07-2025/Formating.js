@@ -35,3 +35,13 @@ let formattedDate = new Intl.DateTimeFormat('en-IN', {
   weekday: 'long'
 }).format(date);
 console.log(formattedDate);
+
+
+let formatdate = new Intl.DateTimeFormat('en-IN', {
+  day:'numeric',
+  month:'long',
+  year:'numeric',
+  weekday:'long'
+}).format(date);
+
+console.log(formatdate);
