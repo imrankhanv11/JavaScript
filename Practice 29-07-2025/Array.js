@@ -101,6 +101,9 @@ console.log(arr5.map(x=> x*2));
 //filter
 console.log(arr5.filter(x=> x > 10));
 
+//reduce
+console.log(arr5.reduce((a,b)=> a+b,0));
+
 //every - check if all match
 console.log(arr5.every(x=> x / 1 == x));
 
