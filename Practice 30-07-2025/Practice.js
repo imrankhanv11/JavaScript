@@ -67,7 +67,8 @@ console.log(datenow.toLocaleDateString('en-In',{
     month:'long',
     day:'2-digit',
     hour:'2-digit',
-    minute:'2-digit'
+    minute:'2-digit',
+    hour12: true
 }));
 console.log(datenow.toLocaleTimeString())
 console.log('----------------');
@@ -95,3 +96,13 @@ let newmethod =  new Intl.NumberFormat('en-In',{
 }).format(rupees);
 
 console.log(newmethod);
+
+
+let datenowww = new Date();
+
+let fixedint = new Intl.DateTimeFormat('en-In',{
+    weekday:'long',
+    year:'2-digit'
+}).format(datenowww);
+
+console.log(fixedint);
