@@ -63,3 +63,11 @@ function three(){
 }
 
 one();
+
+
+//defalut parameter
+function defaultparameter(x,y,z=10){
+    return x+y+z;
+}
+
+console.log(defaultparameter(10,10));
