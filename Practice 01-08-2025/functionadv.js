@@ -77,3 +77,23 @@ const member = {
 let fullName = personb.fullName.bind(member);
 
 fullName();
+
+// memolization
+function memoAdd() {
+    let cache = new Map();
+
+    return function (x, y) {
+        let key = `${x},${y}`;
+        if (cache.has(key)) {
+            return cache.get(key); // return cached result
+        } else {
+            let result = x + y;
+            cache.set(key, result);
+            return result;
+        }
+    };
+}
+
+const add = memoAdd();
+console.log(add(3, 4)); // 7 (calculates)
+console.log(add(3, 4)); // 7 (from cache )
