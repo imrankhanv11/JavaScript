@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery + JSON Server</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h2>Add User</h2>
+  <input type="text" id="name" placeholder="Name" />
+  <input type="email" id="email" placeholder="Email" />
+  <button id="addBtn">Add</button>
+
+  <h2>Users List</h2>
+  <ul id="userList"></ul>
+
+  <script>
+    const apiUrl = "http://localhost:3000/users";
+
+    // 🔹 GET - Read Users
+    function loadUsers() {
+      $.get(apiUrl, function(data) {
+        $('#userList').empty();
+        data.forEach(user => {
+          $('#userList').append(`
+            <li data-id="${user.id}">
+              ${user.name} - ${user.email}
+              <button class="deleteBtn">Delete</button>
+            </li>
+          `);
+        });
+      });
+    }
+
+    loadUsers();
+
+    // 🔹 POST - Add User
+    $('#addBtn').click(function() {
+      const name = $('#name').val();
+      const email = $('#email').val();
+      if (name && email) {
+        $.post(apiUrl, { name, email }, function() {
+          loadUsers();
+          $('#name').val('');
+          $('#email').val('');
+        });
+      }
+    });
+
+    // 🔹 DELETE - Delete User
+    $('#userList').on('click', '.deleteBtn', function() {
+      const id = $(this).parent().data('id');
+      $.ajax({
+        url: `${apiUrl}/${id}`,
+        type: 'DELETE',
+        success: function() {
+          loadUsers();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
