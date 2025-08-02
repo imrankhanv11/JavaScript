@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD using Fetch</title>
+</head>
+<body>
+  <h2>CRUD Operations</h2>
+
+  <form id="userForm">
+    <input type="text" id="fname" placeholder="First Name" required />
+    <input type="text" id="lname" placeholder="Last Name" required />
+    <input type="number" id="userId" placeholder="User ID (for update/delete)" />
+    <button type="submit">Add User</button>
+  </form>
+
+  <button onclick="getUsers()">GET Users</button>
+  <button onclick="updateUser()">PUT Update User</button>
+  <button onclick="deleteUser()">DELETE User</button>
+
+  <pre id="output"></pre>
+
+  <script src="index.js"></script>
+</body>
+</html>
