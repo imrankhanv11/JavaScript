@@ -14,20 +14,27 @@ document.getElementById("userForm").addEventListener("submit", function (e) {
     },
     body: JSON.stringify({ fname, lname })
   })
-  .then(response => response.json())
-  .then(data => {
-    alert("User added successfully!");
-    console.log(data);
-    getUsers();
-  });
+    .then(response => response.json())
+    .then(data => {
+      alert("User added successfully!");
+      console.log(data);
+      getUsers();
+    });
 });
 
-// GET - Fetch users
+// get 
 function getUsers() {
   fetch(apiUrl)
     .then(res => res.json())
     .then(data => {
-      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      let output = '';
+      data.forEach(user => {
+        output += `Name: ${user.fname} ${user.lname}\n`;
+      });
+      document.getElementById("output").textContent = output;
+    })
+    .catch(error => {
+      console.error("Error fetching users:", error);
     });
 }
 
@@ -44,11 +51,11 @@ function updateUser() {
     },
     body: JSON.stringify({ fname, lname })
   })
-  .then(res => res.json())
-  .then(data => {
-    alert("User updated!");
-    getUsers();
-  });
+    .then(res => res.json())
+    .then(data => {
+      alert("User updated!");
+      getUsers();
+    });
 }
 
 // DELETE - Remove user
@@ -58,8 +65,8 @@ function deleteUser() {
   fetch(`${apiUrl}/${userId}`, {
     method: "DELETE"
   })
-  .then(() => {
-    alert("User deleted.");
-    getUsers();
-  });
+    .then(() => {
+      alert("User deleted.");
+      getUsers();
+    });
 }

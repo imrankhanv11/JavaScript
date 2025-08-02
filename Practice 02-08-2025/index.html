@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const myPromise = new Promise((resolve, reject) => {
+            const error = true;
+            if (error == true) {
+                resolve("Yes, Success");
+            } else {
+                reject("No, Faild");
+            }
+        });
+        console.log(myPromise);
+        const todos = async () => {
+            const data = await fetch("https://jsonplaceholder.typicode.com/todos");
+            const todoData = await data.json();
+            console.log(todoData);
+        };
+        todos();
+
+
+        //----------------------------------------------------------------------
+        //all()
+
+        function getCustomerDetails() {
+            return new Promise((resolve) => {
+                setTimeout(() => resolve("👤 Customer: Sabari Raj"), 1000);
+            });
+        }
+
+        function getBookingHistory() {
+            return new Promise((resolve) => {
+                setTimeout(
+                    () => resolve("📖 Bookings: Water wash, Oil change"),
+                    2000
+                );
+            });
+        }
+
+        function getServicePackages() {
+            return new Promise((resolve) => {
+                setTimeout(
+                    () => resolve("📦 Packages: Complete Care, Premium Care"),
+                    1500
+                );
+            });
+        }
+        Promise.all([
+            getCustomerDetails(),
+            getBookingHistory(),
+            getServicePackages(),
+        ])
+            .then(([customer, bookings, packages]) => {
+                console.log("✅ All data loaded:");
+                console.log(customer);
+                console.log(bookings);
+                console.log(packages);
+            })
+            .catch((error) => {
+                console.error("❌ Error loading data:", error);
+            });
+
+        //-------------------------------------------------------------------------------------------------
+        //allSettle()
+        async function allSettled() {
+            const result = await Promise.allSettled([
+                fetch("https://jsonplaceholder.typicode.com/todo00s/1"),
+                fetch("https://jsonplaceholder.typicode.com/toodo"),
+            ]);
+
+            result.forEach((result, index) => {
+                if (result.status === "fulfilled") {
+                    console.log("API One", result.value);
+                } else {
+                    console.warn("Failed");
+                }
+            });
+        }
+
+        allSettled();
+        async function allSettled() {
+            const result = await Promise.allSettled([
+                fetch("https://jsonplaceholder.typicode.com/todos/1"),
+                fetch("https://jsonplaceholder.typicode.com/toodo"),
+            ]);
+
+            result.forEach((result, index) => {
+                if (result.status === "fulfilled") {
+                    const res = result.value;
+                    if (res.ok) {
+                        console.log("Success: ", res);
+                    } else {
+                        console.warn("Response Status: ", res.status);
+                    }
+                } else {
+                    setTimeout(() => console.log("Response Failed"), 6000);
+                }
+            });
+        }
+
+        allSettled();
+
+        async function allSettled() {
+            const result = await Promise.allSettled([
+                fetch("https://jsonplaceholder.typicode.com/todos/1"),
+                fetch("https://jsonplaceholder.typicode.com/toodo"), // typo, 404
+            ]);
+
+            result.forEach(async (result, index) => {
+                if (result.status === "fulfilled") {
+                    const res = result.value;
+                    if (res.ok) {
+                        const res1 = await res.json();
+                        console.log(`✅ API ${index + 1} Success:`, res1);
+                    } else {
+                        console.warn(`⚠️ API ${index + 1} Response Status:`, res.status);
+                    }
+                } else {
+                    console.error(`❌ API ${index + 1} Fetch Failed:`, result.reason);
+                }
+            });
+        }
+
+        allSettled();
+
+        //-------------------------------------------------------------------------------------------
+        //race()
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) =>
+                        resolve(
+                            `📍 Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}`
+                        ),
+                    (err) => reject("❌ Location access denied")
+                );
+            });
+        }
+
+        function timeoutPromise(ms) {
+            return new Promise((_, reject) => {
+                setTimeout(() => reject("⏳ Request timed out."), ms);
+            });
+        }
+        Promise.race([
+            getLocation(),
+            timeoutPromise(3000), // 3 seconds timeout
+        ])
+            .then((result) => {
+                // document.getElementById("output").innerText = result;
+                console.log(result);
+            })
+            .catch((error) => {
+                // document.getElementById("output").innerText = error;
+                console.log(error); x
+            });
+    </script>
+</body>
+
+</html>
