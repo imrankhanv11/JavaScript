@@ -97,3 +97,19 @@ const prm = new Promise(function(accept, reject){
 
 prm.then(value => console.log(value));
 prm.catch(value => console.log(value));
+
+
+// example
+function getData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true;
+      if (success) resolve("Data fetched successfully!");
+      else reject("Error fetching data.");
+    }, 1000);
+  });
+}
+
+getData()
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
