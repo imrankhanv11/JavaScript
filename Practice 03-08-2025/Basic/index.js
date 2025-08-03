@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('#form-one').on('submit', async function (event) {
         event.preventDefault();
 
+
         let fname = $('#fname').val();
         let lname = $('#lname').val();
 
@@ -38,7 +39,7 @@ $(document).ready(function () {
             console.log(error)
         }
     })
-})
+});
 
 
 // get
