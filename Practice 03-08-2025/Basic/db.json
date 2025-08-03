@@ -1,17 +1,6 @@
 {
   "Users": [
     {
-      "id": "1f0d",
-      "fname": "Imran Khan",
-      "lname": "V",
-      "gender": "on",
-      "hobby": [
-        "on",
-        "on"
-      ],
-      "country": "India"
-    },
-    {
       "id": "5843",
       "fname": "Imran Khan",
       "lname": "V",

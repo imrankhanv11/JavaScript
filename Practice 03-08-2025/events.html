@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mouse Events</title>
+</head>
+
+<body>
+
+    <div id="myDiv" style="width:200px; height:100px; background:lightblue;">
+        Hover or click me!
+    </div>
+    <input type="text" id="myInput" placeholder="Type something" />
+    <p id="output"></p>
+
+    <input type="text" id="myInput2" placeholder="Try copy, cut or paste" />
+    <p id="log"></p>
+
+    <script>
+        const myDiv = document.getElementById("myDiv");
+
+        myDiv.addEventListener("click", () => alert("Clicked!"));
+        myDiv.addEventListener("dblclick", () => alert("Double Clicked!"));
+        myDiv.addEventListener("mousedown", () => console.log("Mouse Down"));
+        myDiv.addEventListener("mouseup", () => console.log("Mouse Up"));
+        myDiv.addEventListener("mouseenter", () => console.log("Mouse Entered"));
+        myDiv.addEventListener("mouseleave", () => console.log("Mouse Left"));
+        myDiv.addEventListener("mouseover", () => console.log("Mouse Over"));
+        myDiv.addEventListener("mouseout", () => console.log("Mouse Out"));
+        myDiv.addEventListener("mousemove", () => console.log("Mouse Moving"));
+        myDiv.addEventListener("contextmenu", (e) => {
+            e.preventDefault(); // prevent right-click menu
+            alert("Right Click / Context Menu Triggered");
+        });
+        //   
+        const input = document.getElementById("myInput");
+        const output = document.getElementById("output");
+
+        input.addEventListener("keydown", function (e) {
+            console.log("Key Down:", e.key);
+        });
+
+        input.addEventListener("keyup", function (e) {
+            output.textContent = `You released: ${e.key}`;
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.ctrlKey && e.key === "s") {
+                e.preventDefault();
+                alert("You triggered Ctrl + S!");
+            }
+        });
+        // 
+        const input2 = document.getElementById("myInput2");
+        const log = document.getElementById("log");
+
+        input2.addEventListener("copy", (e) => {
+            log.textContent = "Copied!";
+        });
+
+        input2.addEventListener("cut", (e) => {
+            log.textContent = "Cut!";
+        });
+
+        input2.addEventListener("paste", (e) => {
+            log.textContent = "Pasted!";
+        });
+
+    </script>
+
+</body>
+
+</html>

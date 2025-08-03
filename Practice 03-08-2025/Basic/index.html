@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="index.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
 </head>
 
 <body>
     <form id="form-one">
         <label for="fname">Enter the First Name :</label>
-        <input type="text" id="fname"><br><br>
+        <input type="text" id="fname" placeholder="Enter the First Name" required><br><br>
 
         <label for="lname">Enter the Last Name :</label>
-        <input type="text" id="lname"><br><br>
+        <input type="text" id="lname" placeholder="Enter the last Name" required><br><br>
 
         <input type="radio" name="gender" id="Male" value="Male">
         <label for="Male">Male</label>
-        <input type="radio" name="gender" id="Female" value="Female>
+        <input type="radio" name="gender" id="Female" value="Female">
         <label for="Female">Female</label><br><br>
 
         <input type="checkbox" name="hobby" id="Cricket" value="Cricket">
@@ -29,13 +29,22 @@
         <input type="checkbox" name="hobby" id="Music" value="Music">
         <label for="Music">Music</label><br><br>
 
+        <label for="country">Country</label>
         <select id="country">
             <option value="India">India</option>
             <option value="USA">USA</option>
         </select><br><br>
-        
+
         <button type="submit">Summit</button>
     </form>
+    <br><hr>
+    <label for="id">Enter the id:</label>
+    <input type="text" id="id" placeholder="enter the id" required><br><br>
+    <button id="getid">Get</button>
+    <button id="Delete">Delete</button>
+    <div id="output"></div>
+    <hr>
+    <script src="index.js"></script>
 </body>
 
 </html>
