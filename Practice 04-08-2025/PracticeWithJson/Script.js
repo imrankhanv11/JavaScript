@@ -118,7 +118,7 @@ function fixstyle(data) {
 
         const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
 
-        li.append(strong).append(value);  
+        li.append(strong).append(value);
         ul.append(li);
     }
 
@@ -207,9 +207,9 @@ $('document').ready(function () {
 
 // fucntion to arrange
 function structure(data) {
-    
+
     let ul = $('<ul></ul>');
-    for(let key in data){
+    for (let key in data) {
         let li = $('<li></li>');
         let strong = $('<strong></strong>').text(`${key} : `);
 
@@ -224,32 +224,158 @@ function structure(data) {
 
 
 // delete
-$('document').ready(function (){
-    $('#delete').on('click', async function(e){
+$('document').ready(function () {
+    $('#delete').on('click', async function (e) {
         e.preventDefault();
 
         let id = $('#del').val();
 
-        try{
+        try {
             const [userResponse, detailsResponse] = await Promise.all([
                 fetch(`${user}/${id}`, {
-                    method : 'DELETE'
+                    method: 'DELETE'
                 }),
-                fetch(`${details}/${id}`,{
-                    method :'DELETE'
+                fetch(`${details}/${id}`, {
+                    method: 'DELETE'
                 })
             ]);
 
-            if(!userResponse.ok || !detailsResponse.ok){
+            if (!userResponse.ok || !detailsResponse.ok) {
                 throw new Error('Fetched Fail');
             }
 
             alert('user deleted succesfully');
 
-            
+
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     });
 });
+
+
+// update --- for edit button
+$('document').ready(function () {
+    $('#edit').on('click', async function (e) {
+        e.preventDefault();
+
+        let searchid = $('#updateid').val();
+
+        $('#main-button').hide();
+
+        try {
+            const [uservalue, detailsvalue] = await Promise.all([
+                fetch(`${user}/${searchid}`),
+                fetch(`${details}/${searchid}`)
+            ]);
+
+            if (!uservalue.ok || !detailsvalue.ok) {
+                throw new Error('Failed of fetch');
+            }
+
+            const userdata = await uservalue.json();
+            const detailsdata = await detailsvalue.json();
+
+            const fulldata = {
+                ...userdata, ...detailsdata
+            }
+
+            let fname = fulldata.FirstName;
+            let lname = fulldata.LastName;
+            let email = fulldata.Email;
+            let Gender = fulldata.gender;
+
+
+            $('#fname').val(fname);
+            $('#lname').val(lname);
+            $('#email').val(email);
+
+            $(`input[name="gender"][value="${Gender}"]`).prop('checked', true);
+
+            let hobbyArray = fulldata.hobby; 
+
+            $('input[name="hobby"]').each(function () {
+                if (hobbyArray.includes($(this).val())) {
+                    $(this).prop('checked', true);
+                } else {
+                    $(this).prop('checked', false); 
+                }
+            });
+
+        }
+        catch (error) {
+            console.log(error);
+            alert('id not found');
+        }
+
+
+    })
+});
+
+
+// update for -- update button
+$('document').ready(function () {
+
+    $('#update').on('click', async function (e) {
+        e.preventDefault();
+
+        $('#main-button').show();
+
+        let FirstName = $('#fname').val();
+        let LastName = $('#lname').val();
+        let Email = $('#email').val();
+        let Picture = $('#file').val();
+
+        let hobby = [];
+        $('input[name="hobby"]:checked').each(function () {
+            hobby.push($(this).val());
+        });
+
+        let gender = $('input[name="gender"]:checked').val();
+
+        
+        let searchid = $('#updateid').val();
+
+        try {
+            const response = await fetch(`${user}/${searchid}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    FirstName, LastName, Email, Picture
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user');
+            }
+
+            const responsedata = await response.json();
+
+            const detailsresponse = await fetch(`${details}/${searchid}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: responsedata.id, hobby, gender
+                })
+            });
+
+            if (!detailsresponse.ok) {
+                throw new Error('Failed to fetch details');
+            }
+
+            alert('User and details saved');
+        }
+        catch (error) {
+            console.log(error);
+            alert('error :' + error.message);
+        }
+
+    });
+
+});
+

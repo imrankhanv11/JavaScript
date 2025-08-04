@@ -25,18 +25,11 @@
       "Email": "picture@gmail.com"
     },
     {
-      "id": "beef",
-      "FirstName": "file test",
-      "LastName": "picture",
-      "Email": "picture@gmail.com",
-      "Picture": "C:\\fakepath\\wallparer.png"
-    },
-    {
-      "id": "85db",
-      "FirstName": "test",
-      "LastName": "picture",
-      "Email": "picture@gmail.com",
-      "Picture": ""
+      "FirstName": "sabari",
+      "LastName": "raj",
+      "Email": "sabari@gmail.com",
+      "Picture": "",
+      "id": "beef"
     }
   ],
   "UserInformation": [
@@ -75,16 +68,10 @@
     {
       "id": "beef",
       "hobby": [
+        "Reading",
         "Reading"
       ],
       "gender": "Male"
-    },
-    {
-      "id": "85db",
-      "hobby": [
-        "Cricket"
-      ],
-      "gender": "Female"
     }
   ]
 }

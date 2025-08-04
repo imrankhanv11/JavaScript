@@ -67,18 +67,28 @@
             <input type="file" id="file" class="form-control w-50">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" id="main-button" class="btn btn-primary">Submit</button><br><br>
+        <hr>
+        <div class="mb-3">
+            <label for="updateid" class="form-label">Enter the Id for update :</label>
+            <input type="text" id="updateid" class="form-control w-50">
+        </div>
+
+        <button type="button" id="edit" class="btn btn-primary">Edit</button>
+
+        <button type="button" id="update" class="btn btn-primary">Update</button><br><br>
+
     </form>
 
 
     <hr>
     <div class="container mt-4">
-    <div class="mb-3">
-        <label for="searchid" class="form-label">Enter your id :</label>
-        <input type="text" id="searchid" required class="form-control w-50">
-    </div>
+        <div class="mb-3">
+            <label for="searchid" class="form-label">Enter your id :</label>
+            <input type="text" id="searchid" required class="form-control w-50">
+        </div>
 
-    <button id="search" class="btn btn-primary">Search</button>
+        <button id="search" class="btn btn-primary">Search</button>
     </div>
     <div id="output">
 
