@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="ajax.js" defer></script>
+</head>
+
+<body>
+    <form id="myform" class="container mt-4">
+        <div class="mb-3">
+            <label for="fname" class="form-label">Enter the First Name :</label>
+            <input type="text" id="fname" required placeholder="First Name" class="form-control w-50">
+        </div>
+        <div class="mb-3">
+            <label for="lname" class="form-label">Enter the Last Name :</label>
+            <input type="text" id="lname" required placeholder="Last Name" class="form-control w-50">
+        </div>
+        <button class="btn btn-primary" type="submit">Summit</button>
+    </form>
+    <hr>
+    <button class="btn btn-primary" id="getvalue" type="button" style="margin-left: 12px;">Get All</button>
+    <br><br>
+    <div id="output">
+
+    </div>
+
+    <hr>
+    <div class="mb-3">
+        <label for="del" class="form-label">Enter id to delete :</label>
+        <input type="text" id="del" required placeholder="delete id" class="form-control w-50">
+    </div>
+    <button class="btn btn-primary" type="button" id="delbtn">Delete</button>
+    <hr>
+
+    <label for="patch" class="form-label">Enter id to patch :</label>
+    <input type="text" id="patch" required placeholder="patch id" class="form-control w-50">
+    
+    <label for="patch-text" class="form-label">Enter fname :</label>
+    <input type="text" id="patch-text" required placeholder="fname" class="form-control w-50">
+    </div><br>
+    <button class="btn btn-primary" type="button" id="patchbtn">Patch</button>
+    <!-- bootsrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
