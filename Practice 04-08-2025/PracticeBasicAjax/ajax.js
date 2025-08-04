@@ -29,36 +29,36 @@ $('document').ready(function () {
     })
 
     // get
-    $('#getvalue').on('click', function (e) {
-        e.preventDefault();
+    // $('#getvalue').on('click', function (e) {
+    //     e.preventDefault();
 
-        let output = $('#output');
-        output.empty();
-        try {
-            $.ajax({
-                url: 'http://localhost:3000/User',
-                method: 'GET',
-                success: function (data) {
-                    data.forEach(element => {
-                        output.append(structure(element));
-                    });
-                },
-                error: function (error) {
-                    console.log(error)
-                }
-            })
-        }
-        catch (error) {
-            console.log(error);
-        }
-    })
+    //     let output = $('#output');
+    //     output.empty();
+    //     try {
+    //         $.ajax({
+    //             url: 'http://localhost:3000/User',
+    //             method: 'GET',
+    //             success: function (data) {
+    //                 data.forEach(element => {
+    //                     output.append(structure(element));
+    //                 });
+    //             },
+    //             error: function (error) {
+    //                 console.log(error)
+    //             }
+    //         })
+    //     }
+    //     catch (error) {
+    //         console.log(error);
+    //     }
+    // })
 
 });
 
 function structure(data) {
     let ul = $('<ul></ul>');
-    ul.css('border','solid 2px blue');
-    ul.css('width' , '150px').css('margin-left','20px');
+    ul.css('border', 'solid 2px blue');
+    ul.css('width', '150px').css('margin-left', '20px');
     for (let key in data) {
         let li = $('<li></li>');
         let strong = $('<strong></strong>');
@@ -120,3 +120,27 @@ $('#patchbtn').on('click', async function (e) {
         console.log(error)
     }
 })
+
+function start() {
+    let output = $('#output');
+    output.empty();
+    try {
+        $.ajax({
+            url: 'http://localhost:3000/User',
+            method: 'GET',
+            success: function (data) {
+                data.forEach(element => {
+                    output.append(structure(element));
+                });
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+start();
