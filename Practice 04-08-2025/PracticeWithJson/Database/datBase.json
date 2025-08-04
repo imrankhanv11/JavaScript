@@ -1,0 +1,48 @@
+{
+  "User": [
+    {
+      "id": "1",
+      "FirstName": "Imran Khan",
+      "LastName": "V",
+      "Email": "imufav7@gmail.com"
+    },
+    {
+      "id": "80e3",
+      "FirstName": "San",
+      "LastName": "S",
+      "Email": "san@gmail.com"
+    },
+    {
+      "id": "2f68",
+      "FirstName": "hello",
+      "LastName": "value",
+      "Email": "hear@gmail.com"
+    }
+  ],
+  "UserInformation": [
+    {
+      "id": "1",
+      "Hobby": [
+        "Cricket",
+        "Reading"
+      ],
+      "Gender": "Male"
+    },
+    {
+      "id": "80e3",
+      "hobby": [
+        "on",
+        "on"
+      ],
+      "gender": "on"
+    },
+    {
+      "id": "2f68",
+      "hobby": [
+        "on",
+        "on"
+      ],
+      "gender": "on"
+    }
+  ]
+}

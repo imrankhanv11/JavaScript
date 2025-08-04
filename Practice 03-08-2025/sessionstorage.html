@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SessionStorage with User Input</title>
+</head>
+<body>
+  <h2>SessionStorage Input Example</h2>
+
+  <input type="text" id="userInput" placeholder="Enter your name" />
+  <br><br>
+  <button onclick="setSessionItem()">Set</button>
+  <button onclick="getSessionItem()">Get</button>
+  <button onclick="updateSessionItem()">Update</button>
+  <button onclick="removeSessionItem()">Remove</button>
+  <button onclick="clearSessionStorage()">Clear All</button>
+
+  <p id="sessionResult"></p>
+
+  <script>
+    function setSessionItem() {
+      const input = document.getElementById("userInput").value;
+      if (input.trim()) {
+        sessionStorage.setItem("sessionUser", input);
+        document.getElementById("sessionResult").innerText = `Saved: ${input}`;
+      } else {
+        document.getElementById("sessionResult").innerText = "nter a valid name.";
+      }
+    }
+
+    function getSessionItem() {
+      const value = sessionStorage.getItem("sessionUser");
+      document.getElementById("sessionResult").innerText = value
+        ? `Retrieved: ${value}`
+        : "No value found in sessionStorage.";
+    }
+
+    function updateSessionItem() {
+      const updatedValue = prompt("Enter new name to update:");
+      if (updatedValue && updatedValue.trim()) {
+        sessionStorage.setItem("sessionUser", updatedValue.trim());
+        document.getElementById("sessionResult").innerText = `Updated to: ${updatedValue}`;
+      } else {
+        document.getElementById("sessionResult").innerText = "Update cancelled or invalid input.";
+      }
+    }
+
+    function removeSessionItem() {
+      sessionStorage.removeItem("sessionUser");
+      document.getElementById("sessionResult").innerText = "sessionUser removed from sessionStorage.";
+    }
+
+    function clearSessionStorage() {
+      sessionStorage.clear();
+      document.getElementById("sessionResult").innerText = "All sessionStorage cleared!";
+    }
+  </script>
+</body>
+</html>

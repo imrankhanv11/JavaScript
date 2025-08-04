@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LocalStorage Practice</title>
+</head>
+<body>
+  <h2>LocalStorage Methods Demo</h2>
+  <button onclick="setItem()">Set </button>
+  <button onclick="getItem()">Get</button>
+  <button onclick="updateItem()">Update</button>
+  <button onclick="removeItem()">Remove Item</button>
+  <button onclick="clearStorage()">Clear All</button>
+  <p id="result"></p>
+
+  <script>
+    // Set item 
+    function setItem() {
+      localStorage.setItem("username", "Imran Khan");
+      document.getElementById("result").innerText = "Item added: username = Imran Khan";
+    }
+
+    // Get item by key
+    function getItem() {
+      const value = localStorage.getItem("username");
+      document.getElementById("result").innerText = value
+        ? `Fetched value: username = ${value}`
+        : "username not found in localStorage";
+    }
+
+    // Update item
+    function updateItem() {
+      localStorage.setItem("username", "Imran Developer");
+      document.getElementById("result").innerText = "Item updated: username = Imran Developer";
+    }
+
+    // Remove specific item
+    function removeItem() {
+      localStorage.removeItem("username");
+      document.getElementById("result").innerText = "Item removed: username";
+    }
+
+    // Clear all items
+    function clearStorage() {
+      localStorage.clear();
+      document.getElementById("result").innerText = "All localStorage cleared!";
+    }
+  </script>
+</body>
+</html>
