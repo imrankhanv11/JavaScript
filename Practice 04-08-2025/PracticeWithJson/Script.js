@@ -1,6 +1,6 @@
 
 let user = 'http://localhost:3000/User';
-let details ='http://localhost:3000/UserInformation';
+let details = 'http://localhost:3000/UserInformation';
 
 // post
 $('document').ready(function () {
@@ -11,6 +11,7 @@ $('document').ready(function () {
         let FirstName = $('#fname').val();
         let LastName = $('#lname').val();
         let Email = $('#email').val();
+        let Picture = $('#file').val();
 
         let hobby = [];
         $('input[name="hobby"]:checked').each(function () {
@@ -19,42 +20,42 @@ $('document').ready(function () {
 
         let gender = $('input[name="gender"]:checked').val();
 
-        try{
-            const response = await fetch(user,{
-                method : 'POST',
-                headers : {
-                    'Content-Type' : 'application/json'
+        try {
+            const response = await fetch(user, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                body : JSON.stringify({
-                    FirstName, LastName, Email
+                body: JSON.stringify({
+                    FirstName, LastName, Email, Picture
                 })
             });
 
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error('Failed to fetch user');
             }
 
             const responsedata = await response.json();
 
-            const detailsresponse = await fetch(details,{
-                method : 'POST',
-                headers : {
-                    'Content-Type' : 'application/json'
+            const detailsresponse = await fetch(details, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                body : JSON.stringify({
-                    id : responsedata.id, hobby, gender
+                body: JSON.stringify({
+                    id: responsedata.id, hobby, gender
                 })
             });
 
-            if(!detailsresponse.ok){
+            if (!detailsresponse.ok) {
                 throw new Error('Failed to fetch details');
             }
 
             alert('User and details saved');
         }
-        catch(error){
+        catch (error) {
             console.log(error);
-            alert('error :'+ error.message);
+            alert('error :' + error.message);
         }
 
     });
@@ -62,27 +63,27 @@ $('document').ready(function () {
 });
 
 // get with id
-$('document').ready(function(){
+$('document').ready(function () {
 
-    $('#search').on('click', async function(e){
+    $('#search').on('click', async function (e) {
         e.preventDefault();
 
         let searchid = $('#searchid').val();
         let output = $('#output');
         output.empty();
 
-        if(searchid.trim().length === 0){
-             alert('Plese enter id');
-             return;
+        if (searchid.trim().length === 0) {
+            alert('Plese enter id');
+            return;
         }
-        
-        try{
+
+        try {
             const [uservalue, detailsvalue] = await Promise.all([
                 fetch(`${user}/${searchid}`),
                 fetch(`${details}/${searchid}`)
             ]);
 
-            if(!uservalue.ok || !detailsvalue.ok){
+            if (!uservalue.ok || !detailsvalue.ok) {
                 throw new Error('Failed of fetch');
             }
 
@@ -93,32 +94,35 @@ $('document').ready(function(){
                 ...userdata, ...detailsdata
             }
 
-            let heading = document.createElement('h2');
-            heading.textContent = 'Your information';
-            
+            let heading = $('<h2></h2>').text("your information");
+
             output.append(heading);
-            const ul = document.createElement('ul');
 
-            for(let key in fulldata){
-                const li = document.createElement('li');
-                const strong = document.createElement('strong');
-                strong.textContent = key + ' : ';
 
-                li.appendChild(strong);
-
-                const value = Array.isArray(fulldata[key]) ? fulldata[key].join(', ') : fulldata[key];
-
-                li.append(value);
-                ul.appendChild(li);
-            }
-            output.append(ul);
+            output.append(fixstyle(fulldata));
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     });
 });
 
+function fixstyle(data) {
+
+    const ul = $('<ul></ul>');
+
+    for (let key in data) {
+        const li = $('<li></li>');
+        const strong = $('<strong></strong>').text(`${key}: `);
+
+        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
+
+        li.append(strong).append(value);  
+        ul.append(li);
+    }
+
+    return ul;
+}
 
 // get all
 $(document).ready(function () {
@@ -171,28 +175,30 @@ $(document).ready(function () {
 
 
 // get all but user only
-$('document').ready(function(){
-    $('#getoneuser').on('click', async function(e){
+$('document').ready(function () {
+    $('#getoneuser').on('click', async function (e) {
         e.preventDefault();
 
         let output = $('#getoneoutput');
         output.empty();
 
-        try{
+        try {
             const response = await fetch(user);
 
-            if(!response.ok){
-                throw new Error ('Fetch is failled');
+            if (!response.ok) {
+                throw new Error('Fetch is failled');
             }
             const data = await response.json();
-            
+
+            let h1 = $('<h2></h2>').text('User Detials only');
+            output.append(h1);
             data.forEach(element => {
                 output.append(structure(element));
             });
-            
-            
+
+
         }
-        catch(error){
+        catch (error) {
             console.log(error);
         }
     });
@@ -200,22 +206,49 @@ $('document').ready(function(){
 
 // fucntion to arrange
 function structure(data) {
-    let ul = document.createElement('ul');
+    
+    let ul = $('<ul></ul>');
+    for(let key in data){
+        let li = $('<li></li>');
+        let strong = $('<strong></strong>').text(`${key} : `);
 
-    for (let key in data) {
-        let li = document.createElement('li');
-        let strong = document.createElement('strong');
-        strong.textContent = key + " : ";
+        let value = Array.isArray(data[key]) ? data[key].join(',') : data[key];
 
-        li.appendChild(strong);
-
-        const value = Array.isArray(data[key]) 
-            ? data[key].join(', ') 
-            : data[key];
-        
-        li.append(value);
-        ul.appendChild(li);
+        li.append(strong).append(value);
+        ul.append(li);
     }
 
     return ul;
 }
+
+
+// delete
+$('document').ready(function (){
+    $('#delete').on('click', async function(e){
+        e.preventDefault();
+
+        let id = $('#del').val();
+
+        try{
+            const [userResponse, detailsResponse] = await Promise.all([
+                fetch(`${user}/${id}`, {
+                    method : 'DELETE'
+                }),
+                fetch(`${details}/${id}`,{
+                    method :'DELETE'
+                })
+            ]);
+
+            if(!userResponse.ok || !detailsResponse.ok){
+                throw new Error('Fetched Fail');
+            }
+
+            alert('user deleted succesfully');
+
+            
+        }
+        catch(error){
+            console.log(error);
+        }
+    });
+});
