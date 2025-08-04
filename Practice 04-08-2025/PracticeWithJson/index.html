@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="Script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         ul li {
             list-style-type: none;
@@ -16,41 +17,69 @@
 </head>
 
 <body>
-    <form id="submitform">
-        <label for="fname">Enter your First Name :</label>
-        <input type="text" id="fname" placeholder="F-Name" required><br><br>
+    <form id="submitform" class="container mt-4">
 
-        <label for="lname">Enter your Last Name :</label>
-        <input type="text" id="lname" required placeholder="L-Name"><br><br>
+        <div class="mb-3">
+            <label for="fname" class="form-label">Enter your First Name :</label>
+            <input type="text" id="fname" class="form-control w-50" placeholder="F-Name" required>
+        </div>
 
-        <label for="email">Enter your email add :</label>
-        <input type="email" id="email" placeholder="example@gmail.com" required><br><br>
+        <div class="mb-3">
+            <label for="lname" class="form-label">Enter your Last Name :</label>
+            <input type="text" id="lname" class="form-control w-50" required placeholder="L-Name">
+        </div>
 
-        <input type="checkbox" name="hobby" id="Cricket" value="Cricket">
-        <label for="Cricket">Cricket</label><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">Enter your email add :</label>
+            <input type="email" id="email" class="form-control w-50" placeholder="example@gmail.com" required>
+        </div>
 
-        <input type="checkbox" name="hobby" id="Reading" value="Reading">
-        <label for="Reading">Reading</label><br>
+        <div class="mb-3">
+            <label class="form-label d-block">Select your hobbies:</label>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="hobby" id="Cricket" value="Cricket">
+                <label class="form-check-label" for="Cricket">Cricket</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="hobby" id="Reading" value="Reading">
+                <label class="form-check-label" for="Reading">Reading</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="hobby" id="Singing" value="Reading">
+                <label class="form-check-label" for="Singing">Singing</label>
+            </div>
+        </div>
 
-        <input type="checkbox" name="hobby" id="Singing" value="Reading">
-        <label for="Singing">Singing</label><br><br>
+        <div class="mb-3">
+            <label class="form-label d-block">Select Gender:</label>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="gender" id="Male" value="Male">
+                <label class="form-check-label" for="Male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" name="gender" id="Femal" value="Female">
+                <label class="form-check-label" for="Femal">Female</label>
+            </div>
+        </div>
 
-        <input type="radio" name="gender" id="Male" value="Male">
-        <label for="Male">Male</label><br>
+        <div class="mb-3">
+            <label for="file" class="form-label">Upload File:</label>
+            <input type="file" id="file" class="form-control w-50">
+        </div>
 
-        <input type="radio" name="gender" id="Femal" value="Female">
-        <label for="Femal">Female</label>
-        <br><br>
-
-        <input type="file" id="file"> <br><br>
-
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <hr>
-    <label for="searchid">Enter your id :</label>
-    <input type="text" id="searchid" required><br><br>
 
-    <button id="search">Search</button>
+
+    <hr>
+    <div class="container mt-4">
+    <div class="mb-3">
+        <label for="searchid" class="form-label">Enter your id :</label>
+        <input type="text" id="searchid" required class="form-control w-50">
+    </div>
+
+    <button id="search" class="btn btn-primary">Search</button>
+    </div>
     <div id="output">
 
     </div>
@@ -69,6 +98,8 @@
     <label for="del">Enter id to delete :</label>
     <input type="text" id="del" required><br><br>
     <button id="delete">Delete with id</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

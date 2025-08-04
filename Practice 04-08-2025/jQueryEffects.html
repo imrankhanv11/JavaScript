@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        #panel,
+        #flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="one">hello</div>
+    <div id="two">hello2</div>
+    <button id="onebtn">one</button>
+    <button id="twobtn">two</button>
+    <hr>
+    <button id="btnthree">Click to fade in boxes</button><br><br>
+
+    <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+    <div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+    <div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+
+    <hr>
+
+    <button id="btnfour">Click to fade out boxes</button><br><br>
+
+    <div id="div11" style="width:80px;height:80px;background-color:red;"></div><br>
+    <div id="div22" style="width:80px;height:80px;background-color:green;"></div><br>
+    <div id="div33" style="width:80px;height:80px;background-color:blue;"></div>
+    <hr>
+    <button id="button111">Click to fade in/out boxes</button><br><br>
+
+    <div id="div111" style="width:80px;height:80px;background-color:red;"></div>
+    <br>
+    <div id="div222" style="width:80px;height:80px;background-color:green;"></div>
+    <br>
+    <div id="div333" style="width:80px;height:80px;background-color:blue;"></div>
+    <hr>
+    <div id="flip">Click to slide down panel</div>
+    <div id="panel">Hello world!</div>
+    <script>
+        $('#onebtn').on('click', function () {
+            $('#one').hide();
+        })
+        $('#twobtn').on('click', () => {
+            $('#two').toggle();
+        }
+        )
+
+        // fade in
+        $(document).ready(function () {
+            $("#btnthree").click(function () {
+                $("#div1").fadeIn();
+                $("#div2").fadeIn("slow");
+                $("#div3").fadeIn(3000);
+            });
+        });
+
+        // fade out
+        $('#btnfour').on('click', function () {
+            $("#div11").fadeOut();
+            $("#div22").fadeOut("slow");
+            $("#div33").fadeOut(3000);
+        });
+
+        // fadetoggele
+        $(document).ready(function () {
+            $("#button111").click(function () {
+                $("#div111").fadeToggle();
+                $("#div222").fadeToggle("slow");
+                $("#div333").fadeToggle(3000);
+            });
+        });
+
+        // slidedown
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideDown("slow");
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -103,16 +103,17 @@ $('document').ready(function () {
         }
         catch (error) {
             console.log(error);
+            alert('id not found');
         }
     });
 });
 
 function fixstyle(data) {
 
-    const ul = $('<ul></ul>');
+    const ul = $('<ul class="list-group"></ul>');
 
     for (let key in data) {
-        const li = $('<li></li>');
+        const li = $('<li class="list-group-item"></li>');
         const strong = $('<strong></strong>').text(`${key}: `);
 
         const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
