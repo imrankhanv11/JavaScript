@@ -34,6 +34,8 @@ $('document').ready(function () {
         let output = $('#output');
         output.empty(); // Clear existing items
 
+        output.fadeIn(1000);
+
         try {
             const response = await fetch(url);
             if (!response.ok) {
