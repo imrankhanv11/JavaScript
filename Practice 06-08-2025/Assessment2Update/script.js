@@ -184,11 +184,8 @@ $('document').ready(function () {
     $('#output').on('click', '.upbtn', async function (e) {
         e.preventDefault();
 
-        // getting id which one need to update
-        const id = $(this).attr('data-id');
 
-        // set
-        changeId = id;
+        changeId = $(this).attr('data-id');
 
         // this btn
         $(this).hide();
@@ -207,7 +204,7 @@ $('document').ready(function () {
         isDone.prop('checked', false);
 
         try {
-            const upResponse = await fetch(`${url}/${id}`);
+            const upResponse = await fetch(`${url}/${changeId}`);
             const data = await upResponse.json();
 
             // populate the details
@@ -283,7 +280,7 @@ $('document').ready(function () {
         }
     })
 
-    // search with priority
+    // -------------------SEARCH WITH PRIORITY------------
     $('#serch-btn-pre').on('click', async function (e) {
         e.preventDefault();
 
@@ -334,23 +331,14 @@ $('document').ready(function () {
         displayTask();
     })
 
-    // back btn -- for title
-        $('#searc-btn-tit-back').on('click', function (e) {
-        e.preventDefault();
-
-        
-        let searchtit = $('#t-search').val();
-        searchtit.val('');
-
-        displayTask();
-    })
-
-
-    // search with title
+    //  --------------SEARCH WITH TITLE----------------------
     $('#t-search').on('input', async function (e) {
         e.preventDefault();
 
         let searchtit = $('#t-search').val();
+
+        let backbtn = $('#searc-btn-tit-back');
+        backbtn.show();
 
         // take output to show
         const output = $('#output');
@@ -366,12 +354,13 @@ $('document').ready(function () {
             const data = await titResponse.json();
 
             let count = 0;
-            data.forEach(Element => {
-                if (data.title.startsWith(Element)) {
-                    output.append(displayFormat(Element));
+            data.forEach(element => {
+                if (element.title.toLowerCase().startsWith(searchtit.toLowerCase())) {
+                    output.append(displayFormat(element));
                     count++;
                 }
             });
+
 
             if (count === 0) {
                 let h2 = $('<h2>').text(`No task in Priority of ${searchPre}`).css('color', 'red');
@@ -385,4 +374,54 @@ $('document').ready(function () {
         }
 
     });
+
+    // back btn -- for title
+    $('#searc-btn-tit-back').on('click', function (e) {
+        e.preventDefault();
+
+        $('#t-search').val('');
+        $(this).hide();
+        displayTask();
+    })
+
+    // ----------------SORTING---------------------
+    $('#btn-sort').on('click', async function (e) {
+        e.preventDefault();
+
+        let output = $('#output');
+        output.empty();
+
+        $('#searc-btn-sort-back').show();
+
+        try {
+            const sortResponse = await fetch(url);
+
+            if (!sortResponse.ok) {
+                throw new Error("Can't fetch the data");
+            }
+
+            const data = await sortResponse.json();
+
+            const datasort = data.sort((a, b) => b.priority - a.priority);
+
+            // foreach loop to seprate each task
+            datasort.forEach(Element => {
+                output.append(displayFormat(Element));
+            });
+        }
+        catch (error) {
+            console.log(error);
+        }
+    })
+
+    // back -- for short
+        // back btn -- for title
+    $('#searc-btn-sort-back').on('click', function (e) {
+        e.preventDefault();
+        $(this).hide();
+        displayTask();
+    })
+
+
+
 }); 
