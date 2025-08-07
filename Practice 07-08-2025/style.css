@@ -1,0 +1,25 @@
+li{
+    list-style: none;
+}
+
+.maindiv{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 400px;
+}
+
+ul{
+    display: inline-block;
+}
+#output{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#upbtn{
+    display: none;
+}
