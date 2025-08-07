@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center">
+        <form id="myForm" class="mt-4 shadow p-4 rounded border">
+            <h3>Products</h3>
+            <div class="mt-4">
+                <label for="pname" class="form-label">Enter the Product Name :</label>
+                <input type="text" id="pname" class="form-control w-80" required>
+            </div>
+            <div class="mt-4">
+                <label for="pdiscription" class="form-label">Enter the Discription :</label>
+                <input type="text" id="pdiscription" class="form-control w-80">
+            </div>
+            <div class="mt-4">
+                <label for="pname" class="form-label">Enter Categeries :</label>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="cat" id="Elecric" value="Elecric">
+                    <label class="form-check-label" for="Elecric">Elecric</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="cat" id="Hardware" value="Hardware">
+                    <label class="form-check-label" for="Hardware">Hardware</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" name="cat" id="Plastic" value="Plastic">
+                    <label class="form-check-label" for="Plastic">Plastic</label>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="prize" class="form-label">Enter the Prize :</label>
+                <input type="text" id="prize" class="form-control w-80" min="0">
+            </div>
+            <div class="mt-4">
+                <label for="quantity" class="form-label">Enter the Quantity :</label>
+                <input type="text" id="quantity" class="form-control w-80">
+            </div>
+            <button class="btn btn-dark mt-4" type="submit">ADD</button>
+        </form>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center"> 
+         
+    </div>
+    <div id="output">
+
+    </div>
+    <!-- bootrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
