@@ -109,7 +109,7 @@ $('document').ready(function () {
             li.append(strong).append(value);
             ul.append(li);
         }
-        let btn = $('<div>');
+        let btn = $('<div>').addClass('btn');
         let delbtn = $('<button>').text('Delete').addClass('btn btn-danger delbtn').data('id', id);
         let editbtn = $('<button>').text('Edit').addClass('btn btn-secondary editbtn').data('id', id);
 
@@ -262,26 +262,64 @@ $('document').ready(function () {
     })
 
     // delete
-    $('#output').on('click', '.delbtn', async function(e){
+    $('#output').on('click', '.delbtn', async function (e) {
         e.preventDefault();
 
         let id = $(this).data('id');
-        
-        try{
-            await fetch(`${Products}/${id}`,{
-                method : 'DELETE'
+
+        try {
+            await fetch(`${Products}/${id}`, {
+                method: 'DELETE'
             })
 
-            await fetch(`${Prize}/${id}`,{
-                method : 'DELETE'
+            await fetch(`${Prize}/${id}`, {
+                method: 'DELETE'
             })
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     })
 
+    // Search by price range
+    $('#serach-form').on('submit', async function (e) {
+        e.preventDefault();
+
+        let min = parseFloat($('#min').val());
+        let max = parseFloat($('#max').val());
+
+        if (isNaN(min) || isNaN(max)) {
+            alert('Please enter valid numbers to search');
+            return;
+        }
+
+        $('#backbtn').show();
+        output.empty();
+        const [Product, Prize] = await fetchforall();
+
+        Product.forEach(productdata => {
+            const prizedata = Prize.find(p => p.id === productdata.id);
+            let fullData = {
+                ...productdata, ...prizedata
+            }
+            if (fullData && fullData.prize >= min && fullData.prize <= max) {
+                output.append(formatDisplay(fullData));
+            }
+        });
+    });
+
+    // back btn
+    $('#backbtn').on('click', function(e){
+        e.preventDefault();
+
+        $(this).hide();
+
+        displayProducts();
+    })
+
 });
+
+
 let upid;
 $('document').ready(function () {
 
@@ -307,5 +345,6 @@ $('document').ready(function () {
 
         upid = prodata.id;
     }
+
 
 });

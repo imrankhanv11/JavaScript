@@ -6,20 +6,34 @@ li{
     padding: 10px;
     border: 2px solid black;
     border-radius: 8px;
-    width: 400px;
 }
 
 ul{
     display: inline-block;
 }
 #output{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,350px));
     gap: 10px;
-    justify-content: center;
+    padding: 10px;
     margin-top: 10px;
 }
 
 #upbtn{
+    display: none;
+}
+
+.btn{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+#searchbtn, #backbtn{
+    width: 25%;
+}
+
+#backbtn{
     display: none;
 }

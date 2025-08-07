@@ -16,6 +16,17 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">E-coMWerse</a>
+
+            <form class="d-flex w-100 justify-content-end">
+                <input class="form-control me-2 w-50" type="search" placeholder="Search Product" aria-label="Search"
+                    id="proSearch" />
+            </form>
+        </div>
+    </nav>
+
     <div class="d-flex justify-content-center">
         <form id="myForm" class="mt-4 shadow p-4 rounded border">
             <h3>Products</h3>
@@ -56,11 +67,15 @@
     </div>
     <hr>
     <div class="mt-4 container">
-        <label for="proSearch" class="form-label">Enter the Product name :</label>
-        <input type="text" id="proSearch" class="form-control w-50">
+        <form class="container" id="serach-form">
+            <label class="form-label" for="min">Enter the Min Value:</label>
+            <input type="number" class="form-control w-50" min="50" step="10" id="min"><br>
+            <label class="form-label" for="max">Enter the Max Value:</label>
+            <input type="number" class="form-control w-50" max="10000" min="100" step="10" id="max">
+            <button class="btn btn-success mt-4" id="searchbtn">Search</button><br>
+            <button type="button" class="btn btn-primary" id="backbtn">Back</button>
+        </form>
     </div>
-    <hr>
-        
     <hr>
     <div id="output">
 
