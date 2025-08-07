@@ -309,14 +309,57 @@ $('document').ready(function () {
     });
 
     // back btn
-    $('#backbtn').on('click', function(e){
+    $('#backbtn').on('click', function (e) {
         e.preventDefault();
 
         $(this).hide();
 
         displayProducts();
-    })
+    });
 
+    // search-cat
+    $('#category-form').on('submit', async function (e) {
+        e.preventDefault();
+
+        output.empty();
+
+        let selectedCategories = [];
+        $('input[name="category"]:checked').each(function () {
+            selectedCategories.push($(this).val());
+        });
+
+        if (selectedCategories.length === 0) {
+            alert('Please select at least one category');
+            return;
+        }
+
+        const [Productdat, Prizedat] = await fetchforall();
+        Productdat.forEach(productdata => {
+            const prizedata = Prizedat.find(p => p.id === productdata.id);
+
+            let fullData = {
+                ...productdata,
+                ...prizedata
+            };
+
+            if (Array.isArray(fullData.cetegories)) {
+                for (let i = 0; i < selectedCategories.length; i++) {
+                    let value = selectedCategories[i].toLowerCase();
+
+                    for (let k = 0; k < fullData.cetegories.length; k++) {
+                        let datavalue = fullData.cetegories[k].toLowerCase();
+
+                        if (value === datavalue) {
+                            output.append(formatDisplay(fullData));
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+
+    });
 });
 
 

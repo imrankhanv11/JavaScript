@@ -69,13 +69,33 @@
     <div class="mt-4 container">
         <form class="container" id="serach-form">
             <label class="form-label" for="min">Enter the Min Value:</label>
-            <input type="number" class="form-control w-50" min="50" step="10" id="min"><br>
+            <input type="number" class="form-control w-50" min="50" step="10" id="min" value="50"><br>
             <label class="form-label" for="max">Enter the Max Value:</label>
-            <input type="number" class="form-control w-50" max="10000" min="100" step="10" id="max">
+            <input type="number" class="form-control w-50" max="10000" min="100" step="10" id="max" value="100">
             <button class="btn btn-success mt-4" id="searchbtn">Search</button><br>
             <button type="button" class="btn btn-primary" id="backbtn">Back</button>
         </form>
     </div>
+    <hr>
+    <form id="category-form" class="container">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="category" value="Elecric" id="electronics">
+            <label class="form-check-label" for="electronics">Electronics</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="category" value="Hardware" id="fashion">
+            <label class="form-check-label" for="fashion">Hardware</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="category" value="Plastic" id="sports">
+            <label class="form-check-label" for="sports">Plastic</label>
+        </div>
+        <button type="submit" class="btn btn-success" id="cat-search">Filter</button>
+    </form>
+    <hr>
+
+    <div id="output"></div>
+
     <hr>
     <div id="output">
 
