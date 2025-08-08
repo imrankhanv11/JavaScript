@@ -1,0 +1,29 @@
+{
+  "Users": [
+    {
+      "id": "5e0c",
+      "name": "imrankhanv",
+      "email": "imran@gmail.com",
+      "passWord": "123456"
+    },
+    {
+      "id": "b6f3",
+      "name": "Sriram",
+      "email": "java@gmail.com",
+      "passWord": "123"
+    }
+  ],
+  "Blogs": [
+    {
+      "id": "f6f4",
+      "authorId": "5e0c",
+      "title": "kjfdkf",
+      "discription": "ldfldl",
+      "category": [
+        "Sports",
+        "Technology",
+        "News"
+      ]
+    }
+  ]
+}

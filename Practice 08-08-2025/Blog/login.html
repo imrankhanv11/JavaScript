@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+        body.dark{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">BlogTime!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-current="page">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Form -->
+    <div class="container">
+
+        <main class="form-container mt-4">
+            <div class="btn-group w-100 mb-3 form-toggle" role="group" id="main-in-up">
+                <button class="btn btn-outline-primary" id="show-signin">
+                    Sign In
+                </button>
+                <button class="btn btn-outline-secondary" id="show-signup">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- signup form -->
+            <form id="signup-form" class="hidden border rounded p-4 bg-light">
+                <h2 class="mb-3">Sign Up</h2>
+                <div class="mb-3">
+                    <input type="text" id="up-name" class="form-control" placeholder="Name" required />
+                </div>
+                <div class="mb-3">
+                    <input type="email" id="up-email" class="form-control" placeholder="Email" required />
+                </div>
+                <div class="mb-3">
+                    <input type="password" id="up-password" class="form-control" placeholder="Password" required />
+                </div>
+                <div class="mb-3">
+                    <input type="password" id="up-conform" class="form-control" placeholder="Conform Password"
+                        required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100" id="register">
+                    Register
+                </button>
+                <p id="signup-msg" class="mt-2 text-danger"></p>
+            </form>
+
+            <!-- signin form  -->
+            <form id="loginForm" class="border rounded p-4 bg-light" novalidate>
+                <h2 class="mb-3">Sign In</h2>
+                <div class="mb-3">
+                    <input type="email" id="email" class="form-control" placeholder="Email" required />
+                    <div class="invalid-feedback">Invalid one</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password" id="password" class="form-control" placeholder="Password" required/>
+                    <div class="invalid-feedback">Invalid one</div>
+                </div>
+                <button type="submit" class="btn btn-success w-100" id="login">
+                    Login
+                </button>
+                <p id="signin-msg" class="mt-2 text-danger"></p>
+            </form>
+        </main>
+    </div>
+
+    <!-- Toast -->
+    <div id="errorToast"
+        class="toast align-items-center text-bg-danger fade position-fixed p-2" style="bottom: 2px; right: 2px; "
+        role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Invalid Username or Password
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"></button>
+        </div>
+    </div>
+
+         
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>
