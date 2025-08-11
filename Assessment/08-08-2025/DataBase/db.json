@@ -1,0 +1,66 @@
+{
+  "employees": [
+    {
+      "fullName": "this one updated",
+      "email": "update@gamil.com",
+      "departmentId": "bffd",
+      "joiningDate": "2025-08-01",
+      "salary": "890",
+      "id": "2f32"
+    },
+    {
+      "id": "003d",
+      "fullName": "Imran test",
+      "email": "test@gmail.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-08-10",
+      "salary": "900"
+    },
+    {
+      "id": "8a2e",
+      "fullName": "hellow",
+      "email": "imran@gmail.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-08-11",
+      "salary": "88"
+    },
+    {
+      "fullName": "-----",
+      "email": "imrkdjfk@gamil.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-08-21",
+      "salary": "89900",
+      "id": "a9f5"
+    },
+    {
+      "id": "66b3",
+      "fullName": "New employee",
+      "email": "new@gmail.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-08-30",
+      "salary": "890"
+    }
+  ],
+  "departments": [
+    {
+      "name": "HumanResouse-------",
+      "code": "HR----------------",
+      "id": "bffd"
+    },
+    {
+      "id": "dd08",
+      "name": "Finance",
+      "code": "DFDF"
+    },
+    {
+      "name": "Software",
+      "code": "sd---",
+      "id": "3859"
+    },
+    {
+      "id": "5cb9",
+      "name": "NewDepartment",
+      "code": "NDT"
+    }
+  ]
+}
