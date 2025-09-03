@@ -17,20 +17,20 @@
       "id": "a9f5"
     },
     {
-      "fullName": "New employee",
-      "email": "new@gmail.com",
-      "departmentId": "bffd",
-      "joiningDate": "2025-08-30",
-      "salary": "890",
-      "id": "66b3"
-    },
-    {
       "id": "a583",
       "fullName": "me ",
       "email": "me@gamil.com",
       "departmentId": "bffd",
       "joiningDate": "2025-09-24",
       "salary": "343477"
+    },
+    {
+      "fullName": "San",
+      "email": "san@gmail.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-09-16",
+      "salary": "450000",
+      "id": "1c69"
     }
   ],
   "departments": [
@@ -46,13 +46,13 @@
     },
     {
       "name": "Software",
-      "code": "sd---",
+      "code": "SD",
       "id": "3859"
     },
     {
-      "id": "5cb9",
-      "name": "NewDepartment",
-      "code": "NDT"
+      "name": "IT Support",
+      "code": "ITS",
+      "id": "5cb9"
     }
   ]
 }
