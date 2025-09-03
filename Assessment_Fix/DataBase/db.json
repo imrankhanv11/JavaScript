@@ -27,7 +27,7 @@
     {
       "fullName": "San",
       "email": "san@gmail.com",
-      "departmentId": "dd08",
+      "departmentId": "3859",
       "joiningDate": "2025-09-16",
       "salary": "450000",
       "id": "1c69"
@@ -50,9 +50,9 @@
       "id": "3859"
     },
     {
-      "name": "IT Support",
-      "code": "ITS",
-      "id": "5cb9"
+      "id": "5cb9",
+      "name": "NewDepartment",
+      "code": "NDT"
     }
   ]
 }
