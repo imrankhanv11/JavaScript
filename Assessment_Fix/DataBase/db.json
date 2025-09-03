@@ -1,0 +1,58 @@
+{
+  "employees": [
+    {
+      "fullName": "hellow",
+      "email": "imran@gmail.com",
+      "departmentId": "dd08",
+      "joiningDate": "2025-08-11",
+      "salary": "88",
+      "id": "8a2e"
+    },
+    {
+      "fullName": "----111--",
+      "email": "imu@gmail.com",
+      "departmentId": "3859",
+      "joiningDate": "2025-09-09",
+      "salary": "334",
+      "id": "a9f5"
+    },
+    {
+      "fullName": "New employee",
+      "email": "new@gmail.com",
+      "departmentId": "bffd",
+      "joiningDate": "2025-08-30",
+      "salary": "890",
+      "id": "66b3"
+    },
+    {
+      "id": "a583",
+      "fullName": "me ",
+      "email": "me@gamil.com",
+      "departmentId": "bffd",
+      "joiningDate": "2025-09-24",
+      "salary": "343477"
+    }
+  ],
+  "departments": [
+    {
+      "name": "HumanResouse",
+      "code": "HR",
+      "id": "bffd"
+    },
+    {
+      "id": "dd08",
+      "name": "Finance",
+      "code": "DFDF"
+    },
+    {
+      "name": "Software",
+      "code": "sd---",
+      "id": "3859"
+    },
+    {
+      "id": "5cb9",
+      "name": "NewDepartment",
+      "code": "NDT"
+    }
+  ]
+}
