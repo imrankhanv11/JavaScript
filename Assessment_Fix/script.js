@@ -19,6 +19,7 @@ $(document).ready(function () {
     }
     dropdownbtn();
 
+    // ============= DEPARTMENT ==================
     // add department 
     $('#departmentForm').on('submit', async function (e) {
         e.preventDefault();
@@ -55,7 +56,7 @@ $(document).ready(function () {
 
     })
 
-    // show departments
+    // Display departments
     async function showDepartment() {
         let output = $('#d-output');
         output.empty();
@@ -100,7 +101,7 @@ $(document).ready(function () {
 
     showDepartment();
 
-    // formatting the data
+    // formatting the data (department)
     function formatdata(data) {
         let tr = $('<tr>');
         let id;
@@ -159,6 +160,7 @@ $(document).ready(function () {
     })
 
     let departmentUpId;
+
     // edit
     $('#d-output').on('click', '.upbtn-d', async function (e) {
         e.preventDefault();
@@ -224,6 +226,7 @@ $(document).ready(function () {
             console.log(`Error : ${error}`);
         }
     })
+
 
     // ===============EMPLOYEE=====================
     $('#employeeForm').on('submit', async function (e) {
@@ -340,7 +343,7 @@ $(document).ready(function () {
 
     }
 
-    // sortting bottons
+    // sortting buttons
     $('#sort').on('click', async function (e) {
         e.preventDefault()
 
@@ -349,6 +352,7 @@ $(document).ready(function () {
 
     });
 
+    // clear short
     $('#clear-sort').on('click', async function () {
         displayDashBoard();
     });
@@ -424,20 +428,30 @@ $(document).ready(function () {
         displayDashBoard();
     });
 
-    // toast
-    function showToast(message = 'Invalid Username or Password') {
-        const toast = $('#errorToast');
-        toast.find('.toast-body').text(message);
+    // Events for search
+    $(document).on('input', '#search-name', function () {
+        let value = $(this).val();
+        searchByName(value);
+    });
 
-        // show once
-        if (!toast.hasClass('show')) {
-            toast.addClass('show').removeClass('fade');
-            setTimeout(() => {
-                toast.removeClass('show').addClass('fade');
-            }, 3000);
-        }
-    }
+    $(document).on('input', '#search-email', function () {
+        searchByEmail($(this).val());
+    });
 
+    $(document).on('input', '#search-joining', function () {
+        searchByJoining($(this).val());
+    });
+
+    $(document).on('input', '#search-salary', function () {
+        searchBySalary($(this).val());
+    });
+
+    $(document).on('input', '#search-department', function () {
+        searchByDepartment($(this).val());
+    });
+
+
+    // functions for Events 
     function searchByName(name) {
         let filtered = emplyeedata.filter(emp =>
             emp.fullName.toLowerCase().includes(name.toLowerCase())
@@ -452,12 +466,6 @@ $(document).ready(function () {
             table.append(dispalydasboradformat(fulldata, emp.id));
         });
     }
-
-    // by fullname
-    $(document).on('input', '#search-name', function () {
-        let value = $(this).val();
-        searchByName(value);
-    });
 
     function searchByEmail(email) {
         let filtered = emplyeedata.filter(emp =>
@@ -519,22 +527,6 @@ $(document).ready(function () {
             table.append(dispalydasboradformat(fulldata, emp.id));
         });
     }
-
-    $(document).on('input', '#search-email', function () {
-        searchByEmail($(this).val());
-    });
-
-    $(document).on('input', '#search-joining', function () {
-        searchByJoining($(this).val());
-    });
-
-    $(document).on('input', '#search-salary', function () {
-        searchBySalary($(this).val());
-    });
-
-    $(document).on('input', '#search-department', function () {
-        searchByDepartment($(this).val());
-    });
 
     let empUpId;
     // display format
@@ -637,11 +629,6 @@ $(document).ready(function () {
         $('#btn-update').show();
     });
 
-    // email validation
-    function isValidEmail(email) {
-        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
-    }
-
     // Acutual update
     $('#btn-update').on('click', async function (e) {
         e.preventDefault();
@@ -690,4 +677,27 @@ $(document).ready(function () {
         }
 
     })
+
+    // ======= TOAST ===========
+
+    function showToast(message = 'Invalid Username or Password') {
+        const toast = $('#errorToast');
+        toast.find('.toast-body').text(message);
+
+        // show once
+        if (!toast.hasClass('show')) {
+            toast.addClass('show').removeClass('fade');
+            setTimeout(() => {
+                toast.removeClass('show').addClass('fade');
+            }, 3000);
+        }
+    }
+
+
+    // email validation
+    function isValidEmail(email) {
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+    }
+
+
 });
